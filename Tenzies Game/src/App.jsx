@@ -34,7 +34,6 @@ export default function App() {
       })
     }
   }, [dice])
-console.log(timesWon)
   useEffect(() => {
     if(timer === 20000){
       setComputerWon(true)
@@ -91,8 +90,9 @@ console.log(timesWon)
             setTimer={setTimer}
             running={running}
             setRunning={setRunning}
+            tenzies={tenzies}
          />
-        <main className={computerWon ? 'computer-wins': ''}>
+        <main>
           {tenzies && <Confetti />}
             <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls. If you don't do it fast enough, the computer wins</p>

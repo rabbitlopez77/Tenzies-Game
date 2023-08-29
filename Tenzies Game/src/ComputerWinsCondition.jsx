@@ -17,11 +17,13 @@ export default function ComputerWinsCondition(props) {
     return (
         props.computerWon && <h1 className="computer-wins-text">Computer Wins</h1> ||
         <div className="timer">
-      <div className="numbers">
+        
+        {props.tenzies && !props.running ? <h1>You Win!</h1> : 
+        <div className="numbers">
         <span>{("0" + Math.floor((props.timer / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((props.timer / 1000) % 60)).slice(-2)}:</span>
         <span>{("0" + ((props.timer / 10) % 100)).slice(-2)}</span>
-      </div>
+      </div>}
     </div>
     )
 }

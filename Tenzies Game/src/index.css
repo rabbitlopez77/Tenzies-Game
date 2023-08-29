@@ -24,19 +24,6 @@ main {
     align-items: center;
 }
 
-.computer-wins{
-    
-    background-color: #F5F5F5;
-    height: 500px;
-    max-width: 800px;
-    border-radius: 5px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    opacity: 0.5;
-}
 
 .dice-container {
     display: grid;
@@ -130,7 +117,4 @@ main {
     font-family: 'Karla', sans-serif;
     width: 150px;
     height: 90px
-}
-.roll-dice.new-game {
-    opacity: 1;
 }
