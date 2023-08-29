@@ -14,6 +14,8 @@ export default function App() {
   const [computerWon, setComputerWon] = React.useState(false)
   const [timer, setTimer] = React.useState(0)
   const [running, setRunning] = React.useState(false)
+  const [hardMode, setHardMode] = React.useState(false)
+  const [timeAllowed, setTimeAllowed] = React.useState(20000)
   const [timesWon, setTimesWon] = React.useState({
     player: 0,
     computer: 0
@@ -35,7 +37,7 @@ export default function App() {
     }
   }, [dice])
   useEffect(() => {
-    if(timer === 20000){
+    if(timer === timeAllowed){
       setComputerWon(true)
       setRunning(false)
       setTenzies(true)
@@ -44,7 +46,9 @@ export default function App() {
       })
     }
   }, [timer])
-
+  useEffect(() => {
+    setTimeAllowed(15000)
+  }, [hardMode])
   function gernerateDie() {
     return {
       value: Math.ceil(Math.random() * 6),
@@ -70,12 +74,20 @@ export default function App() {
     setTenzies(false)
     setTimer(0)
     setComputerWon(false)
+    setHardMode(false)
     
     
   }
 
   const diceElements = dice.map(dice => {return <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} holdDie={() => holdDice(dice.id)} />})
 
+  function hardModeButton() {
+
+    return (
+      <button onClick={() => setHardMode(true)} className="hard-mode-button">Hard Mode</button>
+    )
+  }
+console.log(hardMode)
   function holdDice(id) {
     setDice(oldDice => oldDice.map(die => {
       return die.id === id ? {...die, isHeld: !die.isHeld} : die 
@@ -102,6 +114,7 @@ export default function App() {
             {tenzies ? <button className="roll-dice new-game" onClick={newGameButton}>New Game</button> :
             running && <button className="roll-dice" onClick={rollDice}>Roll</button>}
             {tenzies || !running && <button className="buttons" onClick={() => setRunning(true)}>Start</button>}
+            {!running && !tenzies? hardModeButton() : ''}
             <Scoreboard timesWon={timesWon} />
             
         </main>

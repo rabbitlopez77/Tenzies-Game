@@ -118,3 +118,13 @@ main {
     width: 150px;
     height: 90px
 }
+.hard-mode-button {
+        height: 50px;
+        width: 150px;
+        border: none;
+        border-radius: 6px;
+        background-color: red;
+        color: white;
+        font-size: 1.2rem;
+        font-family: 'Karla', sans-serif;
+}
