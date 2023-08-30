@@ -46,9 +46,6 @@ export default function App() {
       })
     }
   }, [timer])
-  useEffect(() => {
-    setTimeAllowed(15000)
-  }, [hardMode])
   function gernerateDie() {
     return {
       value: Math.ceil(Math.random() * 6),
@@ -75,6 +72,7 @@ export default function App() {
     setTimer(0)
     setComputerWon(false)
     setHardMode(false)
+    setTimeAllowed(20000)
     
     
   }
